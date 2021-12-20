@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         height = svg.attr("height") - margin;
 
   
-        d3.csv("Dataset 1.csv",
+        d3.csv("Dataset 1.csv", 
 
         // When reading the csv, I must format variables:
         function(d){
