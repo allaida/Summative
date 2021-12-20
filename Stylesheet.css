@@ -10,10 +10,9 @@
 .jumbotron {
   background-color: #cae0afdc;
   color: rgb(255, 255, 255);
+  margin-bottom: 80px;
   
 }
-
-
 
 .navbar {
   
@@ -42,18 +41,78 @@
 }
 
 
-.carousel-control.right, .carousel-control.left {
-  background-image: none;
-  
+
+
+
+/*Content part/
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-bottom: 3rem;
+  color: #5a5a5a;
 }
-.carousel-indicators li {
-  border-color: #9ba58edc;
+
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
-.carousel-indicators li.active {
-  background-color: #9ba58edc;
+.marketing h2 {
+  font-weight: 400;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  background-image:"Tom-Hegen-Two-Degree-Celsius-3.jpg";
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+
+}
+
+/*Graphs alignment*/
+.chart2 {
+  margin-bottom: 80px
 }
 
 
 
+/* RESPONSIVE CSS
+-------------------------------------------------- */
 
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
 
