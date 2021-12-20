@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             .style("font-size","16px")
             .style("text-decoration", "underline")
             .style("color", "black")
-            .text("Rise in Sea Levels over the Years")
+            .text("A graph depicting the rise in sea level across the years")
       
             
       })
@@ -57,70 +57,52 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
-        var margin = {top: 20, right: 30, bottom: 40, left: 90},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+  var margin = {top: 0, right: 30, bottom: 40, left: 100},
+  width = 600 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
-        // appending the svg object to the body of the page
-        var svg = d3.select("#chart2")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+  // appending the svg object to the body of the page
+  var svg = d3.select("#chart2")
+  // .append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
 
-        // Parsing the Data
-        d3.csv("fossil-fuel-co2-emissions-by-nation_csv.csv", function(data) {
+  d3.csv("fossil-fuel-co2-emissions-by-nation_csv.csv", function(data) {
 
-        // Add X axis
-        var x = d3.scaleLinear()
-        .domain([function(d) {return d.total}])
-        .range([ 0, width]);
-        svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .selectAll("text")
+    // Add X axis
+    var x = d3.scaleLinear()
+      .domain([0, 2806634])
+      .range([ 120, width+120]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
 
-        // Y axis
-        var y = d3.scaleBand()
-        .range([ 0, height ])
-        .domain(data.map(function(d) { return d.Country; }))
-        .padding(.1);
-        svg.append("g")
-        .call(d3.axisLeft(y))
+    // Y axis
+    var y = d3.scaleBand()
+      .range([ 0, height ])
+      .domain(data.map(function(d) { return d.Country; }))
+      .padding(.1);
+    svg.append("g")
+    .attr("transform", "translate(120,0)")
+      .call(d3.axisLeft(y))
 
-        //Bars
-        svg.selectAll("myRect")
-        .data(data)
-        .enter()
-        .append("rect")
-        .attr("x", x(0) )
-        .attr("y", function(d) { return y(d.Country); })
-        .attr("width", function(d) { return x(d.total); })
-        .attr("height", y.bandwidth() )
-        .attr("fill", "#blue")
+    //Bars
+    svg.selectAll("myRect")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x", x(0) )
+      .attr("y", function(d) { return y(d.Country); })
+      .attr("width", function(d) { return x(d.Total); })
+      .attr("height", y.bandwidth() )
+      .attr("fill", "#69b3a2")
+      .attr("transform", "translate(0,0)")
 
-        g.selectAll(".bar")
-        .data(data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return xScale(d.total); })
-        .attr("y", function(d) { return yScale(d.Country); })
-        .attr("width", xScale.bandwidth());
+  })
 
-        })
 
-        svg.append("text")
-            .attr("x", width/2)
-            .attr("y", margin/2)
-            .attr("text-anchor","middle")
-            .style("font-size","16px")
-            .style("text-decoration", "underline")
-            .style("color", "black")
-            .text("Total CO2 emissions per Country in 2014")
       
-            
-      });
+});
