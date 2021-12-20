@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         height = svg.attr("height") - margin;
 
   
-        d3.csv("Dataset 1.csv", 
+        d3.csv("https://raw.githubusercontent.com/allaida/Summative/main/Dataset%201.csv", 
 
         // When reading the csv, I must format variables:
         function(d){
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
 
-  d3.csv("fossil-fuel-co2-emissions-by-nation_csv.csv", function(data) {
+  d3.csv("https://raw.githubusercontent.com/allaida/Summative/main/fossil-fuel-co2-emissions-by-nation_csv.csv", function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
